@@ -1,9 +1,9 @@
-initial_input = [0.688 0.288 0.022];
+initial_input = [0.688 0.295 0.022];
 transition_matrix = [(21/31) (9/31) (1/31); (8/13) (5/13) 0; 0 0 1];
 output = zeros (50,3);
-t = 1:100;
+t = 1:50;
 output(1,:) = initial_input;
-for i = 2:100    
+for i = 2:50    
     output(i,:) = initial_input * (transition_matrix)^(i-1);
 end
 Win = output(:,1);
@@ -15,6 +15,6 @@ hold on
 Lose = output(:,3);
 plot(t,Lose)
 legend('show')
-legend('Pass', 'Loss', 'Assists')
+legend('Win', 'Draw', 'Lose')
 xlabel ('time')
-ylabel('Markov for a defender')
+ylabel('Probability when 7 players are playing')
